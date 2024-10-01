@@ -26,8 +26,8 @@ public class JwtUtils {
     @Value("${secretJwtString}")
     private String secretJwtString;
 
-    //tu dong goi khi khoi tao class nay
-    @PostConstruct
+
+    @PostConstruct //goi phuong thuc nay moi khi hoan tat inject, o day la sau khi lay secretJwtString tu file application
     private void init()
     {
         byte[] keyBytes = secretJwtString.getBytes(StandardCharsets.UTF_8);
@@ -69,6 +69,5 @@ public class JwtUtils {
     {
         return extractClaims(token, Claims::getExpiration).before(new Date());
     }
-
 
 }

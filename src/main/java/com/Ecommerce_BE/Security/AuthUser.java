@@ -12,7 +12,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class AuthenticateUser implements UserDetails {
+public class AuthUser implements UserDetails {
 
     private User user;
 
@@ -33,7 +33,7 @@ public class AuthenticateUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 
     @Override
