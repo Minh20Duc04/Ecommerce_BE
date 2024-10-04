@@ -1,6 +1,7 @@
 package com.Ecommerce_BE.Model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;

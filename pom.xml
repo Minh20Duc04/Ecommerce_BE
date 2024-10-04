@@ -79,12 +79,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- AWS SDK for S3 -->
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-s3</artifactId>
-			<version>1.12.761</version>
-		</dependency>
 
 		<!-- JWT dependencies -->
 		<dependency>
