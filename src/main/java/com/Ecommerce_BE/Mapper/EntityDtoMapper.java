@@ -2,10 +2,12 @@ package com.Ecommerce_BE.Mapper;
 import com.Ecommerce_BE.Dto.*;
 import com.Ecommerce_BE.Model.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
 @Slf4j
+@Component
 public class EntityDtoMapper {
 
     //user entity to user Dto

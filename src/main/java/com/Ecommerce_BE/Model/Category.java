@@ -1,11 +1,14 @@
 package com.Ecommerce_BE.Model;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 @Entity
+@ToString(exclude = "productList")
 @Table(name = "categories")
 public class Category {
 

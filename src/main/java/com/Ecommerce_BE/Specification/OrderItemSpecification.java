@@ -2,10 +2,11 @@ package com.Ecommerce_BE.Specification;
 
 import com.Ecommerce_BE.Enum.OrderStatus;
 import com.Ecommerce_BE.Model.OrderItem;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.domain.Specification;
 
-import java.time.LocalDate;
-
+import java.time.LocalDateTime;
+@Configuration
 public class OrderItemSpecification {
     //su dung Specification de tao truy van dong (dung khi can xu ly truy van phuc tap hon @Query)
 
@@ -22,7 +23,7 @@ public class OrderItemSpecification {
     }
 
     //tim theo ngay
-    public static Specification<OrderItem> createdBetween(LocalDate startDate, LocalDate endDate)
+    public static Specification<OrderItem> createdBetween(LocalDateTime startDate, LocalDateTime endDate)
     {
         return ((root, query, criteriaBuilder) ->
         {

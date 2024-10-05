@@ -3,6 +3,7 @@ package com.Ecommerce_BE.Model;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

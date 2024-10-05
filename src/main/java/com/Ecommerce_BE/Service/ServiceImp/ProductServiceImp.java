@@ -35,7 +35,21 @@ public class ProductServiceImp implements ProductService {
     @Override
     public Response createProduct(Long categoryId, MultipartFile image, String name, String description, BigDecimal price) throws IOException {
 
-        Category category = categoryRepository.findById(categoryId).orElseThrow(()-> new NotFoundException("Category Not Found"));
+        // Kiểm tra giá trị đầu vào
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Product name must not be empty");
+        }
+
+        if (price == null || price.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Product price must be greater than zero");
+        }
+
+        if (image == null || image.isEmpty()) {
+            throw new IllegalArgumentException("Product image must not be empty");
+        }
+
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new NotFoundException("Category Not Found"));
 
         String productImageUrl = fileStorageService.saveFile(image);
 
@@ -46,13 +60,24 @@ public class ProductServiceImp implements ProductService {
         product.setPrice(price);
         product.setImageUrl(productImageUrl);
 
-        productRepository.save(product);
+        log.info("Creating product: name={}, description={}, price={}, categoryId={}", name, description, price, categoryId);
+
+        try {
+            productRepository.save(product);
+        } catch (Exception e) {
+            log.error("Error saving product: {}", e.getMessage());
+            return Response.builder()
+                    .status(500)
+                    .message("An error occurred while saving the product")
+                    .build();
+        }
 
         return Response.builder()
                 .status(200)
                 .message("Product successfully created")
                 .build();
     }
+
 
     @Override
     public Response updateProduct(Long productId, Long categoryId, MultipartFile image, String name, String description, BigDecimal price) throws IOException {

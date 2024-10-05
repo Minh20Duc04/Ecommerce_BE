@@ -19,7 +19,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -52,6 +51,7 @@ public class UserServiceImp implements UserService {
         System.out.println(savedUser);
 
         UserDto userDto = entityDtoMapper.mapUserToDtoBasic(savedUser);
+
         return Response.builder()
                 .status(200)
                 .message("User successfully added")
