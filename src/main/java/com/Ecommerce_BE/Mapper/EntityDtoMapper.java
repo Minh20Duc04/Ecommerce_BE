@@ -80,6 +80,7 @@ public class EntityDtoMapper {
         UserDto userDto = mapUserToDtoBasic(user);
         if(user.getAddress() != null)
         {
+            System.out.println("ADDRESS IS NOT NULL");
             AddressDto addressDto = mapAddressToDtoBasic(user.getAddress());
             userDto.setAddress(addressDto);
         }

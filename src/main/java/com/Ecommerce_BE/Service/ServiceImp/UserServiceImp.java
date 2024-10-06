@@ -102,6 +102,7 @@ public class UserServiceImp implements UserService {
     @Override
     public Response getUserInfoAndOrderHistory() {
         User user = getLoginUser();
+        log.info(user.getAddress().getCity());
         UserDto userDto = entityDtoMapper.mapUserToDtoPlusAddressAndOrderHistory(user);
 
         return Response.builder()

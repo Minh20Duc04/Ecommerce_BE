@@ -35,16 +35,18 @@ public class ProductServiceImp implements ProductService {
     @Override
     public Response createProduct(Long categoryId, MultipartFile image, String name, String description, BigDecimal price) throws IOException {
 
-        // Kiểm tra giá trị đầu vào
-        if (name == null || name.isEmpty()) {
+        if (name == null || name.isEmpty())
+        {
             throw new IllegalArgumentException("Product name must not be empty");
         }
 
-        if (price == null || price.compareTo(BigDecimal.ZERO) <= 0) {
+        if (price == null || price.compareTo(BigDecimal.ZERO) <= 0)
+        {
             throw new IllegalArgumentException("Product price must be greater than zero");
         }
 
-        if (image == null || image.isEmpty()) {
+        if (image == null || image.isEmpty())
+        {
             throw new IllegalArgumentException("Product image must not be empty");
         }
 
