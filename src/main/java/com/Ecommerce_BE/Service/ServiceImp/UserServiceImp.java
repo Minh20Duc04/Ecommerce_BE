@@ -55,7 +55,7 @@ public class UserServiceImp implements UserService {
         return Response.builder()
                 .status(200)
                 .message("User successfully added")
-                .user(userDto)
+                .data(userDto)
                 .build();
 
     }
@@ -87,7 +87,7 @@ public class UserServiceImp implements UserService {
 
         return Response.builder()
                 .status(200)
-                .userList(userDtos)
+                .data(userDtos)
                 .build();
     }
 
@@ -107,7 +107,7 @@ public class UserServiceImp implements UserService {
 
         return Response.builder()
                 .status(200)
-                .user(userDto)
+                .data(userDto)
                 .build();
     }
 }

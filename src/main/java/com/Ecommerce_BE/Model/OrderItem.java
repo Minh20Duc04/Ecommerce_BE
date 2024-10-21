@@ -3,12 +3,15 @@ package com.Ecommerce_BE.Model;
 import com.Ecommerce_BE.Enum.OrderStatus;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "order_items")
 public class OrderItem {
 

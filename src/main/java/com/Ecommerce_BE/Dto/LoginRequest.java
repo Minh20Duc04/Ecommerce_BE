@@ -2,8 +2,9 @@ package com.Ecommerce_BE.Dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 public class LoginRequest {
 
     @NotBlank(message = "Email is required")

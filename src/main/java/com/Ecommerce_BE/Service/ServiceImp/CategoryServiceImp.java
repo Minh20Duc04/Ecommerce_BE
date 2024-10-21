@@ -56,7 +56,7 @@ public class CategoryServiceImp implements CategoryService {
 
         return Response.builder()
                 .status(200)
-                .categoryList(categoryDtoList)
+                .data(categoryDtoList)
                 .build();
     }
 
@@ -67,7 +67,7 @@ public class CategoryServiceImp implements CategoryService {
 
         return Response.builder()
                 .status(200)
-                .category(categoryDto)
+                .data(categoryDto)
                 .build();
     }
 

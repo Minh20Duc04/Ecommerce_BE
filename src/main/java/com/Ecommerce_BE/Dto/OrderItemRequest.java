@@ -1,8 +1,9 @@
 package com.Ecommerce_BE.Dto;
 
 import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 public class OrderItemRequest {
 
     private Long productId;

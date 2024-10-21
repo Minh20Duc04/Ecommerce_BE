@@ -1,16 +1,17 @@
 package com.Ecommerce_BE.Dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Data
+@AllArgsConstructor
+@Getter
+@Setter
 @Builder
-public class Response { //tao 1 trang thai tra ve chung cho cac Service
+public class Response<T> { //tao 1 trang thai tra ve chung cho cac Service
 
     private int status;
     private String message;
@@ -23,6 +24,9 @@ public class Response { //tao 1 trang thai tra ve chung cho cac Service
     private int totalPage;
     private long totalElement;
 
+    private T data;
+
+    /*
     private AddressDto address;
 
     private UserDto user;
@@ -39,6 +43,5 @@ public class Response { //tao 1 trang thai tra ve chung cho cac Service
 
     private OrderItemDto orderItem;
     private List<OrderItemDto> orderItemList;
-
-
+     */
 }

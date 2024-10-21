@@ -1,15 +1,14 @@
 package com.Ecommerce_BE.Model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
+@Getter
+@Setter
 @Table(name = "products")
 public class Product {
 

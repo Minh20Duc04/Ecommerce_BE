@@ -3,11 +3,12 @@ package com.Ecommerce_BE.Model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Setter
 @Table(name = "reviews")
 public class Review {
 

@@ -38,7 +38,6 @@ public class OrderItemServiceImp implements OrderItemService {
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
     private final OrderItemRepository orderItemRepository;
-    private final OrderItemSpecification orderItemSpecification;
     private final EntityDtoMapper entityDtoMapper;
 
 
@@ -113,7 +112,7 @@ public class OrderItemServiceImp implements OrderItemService {
 
         return Response.builder()
                 .status(200)
-                .orderItemList(orderItems)
+                .data(orderItems)
                 .totalPage(orderItemPage.getTotalPages())
                 .totalElement(orderItemPage.getTotalElements())
                 .build();

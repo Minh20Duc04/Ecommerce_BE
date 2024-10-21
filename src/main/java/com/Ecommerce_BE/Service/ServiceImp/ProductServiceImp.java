@@ -135,7 +135,7 @@ public class ProductServiceImp implements ProductService {
 
         return Response.builder()
                 .status(200)
-                .product(productDto)
+                .data(productDto)
                 .build();
     }
 
@@ -148,7 +148,7 @@ public class ProductServiceImp implements ProductService {
 
         return Response.builder()
                 .status(200)
-                .productList(productDtoList)
+                .data(productDtoList)
                 .build();
     }
 
@@ -167,7 +167,7 @@ public class ProductServiceImp implements ProductService {
 
         return Response.builder()
                 .status(200)
-                .productList(productDtoList)
+                .data(productDtoList)
                 .build();
     }
 
@@ -183,7 +183,7 @@ public class ProductServiceImp implements ProductService {
 
         return Response.builder()
                 .status(200)
-                .productList(productDtoList)
+                .data(productDtoList)
                 .build();
     }
 }
