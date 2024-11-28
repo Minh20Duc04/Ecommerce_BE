@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: Ecommerce_BE
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce_be
+    username: root
+    password: Minhduc3
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: nguyenminhduc02042004@gmail.com
+    password: kcgl agjx shwi vxef
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+server:
+  port: 8082
+
+secretJwtString: c1e07997648cd12b0ef3c7a35f8ff20418a2197db03efd3aee725200419b99c8523a6e0de86397392c05cfb9323161e99ca95ea6bec7e45a852d05003aae98b4
+
+file:
+  upload-dir: C:/uploadFile

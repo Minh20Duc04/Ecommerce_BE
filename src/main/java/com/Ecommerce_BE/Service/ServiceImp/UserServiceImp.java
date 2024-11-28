@@ -13,6 +13,9 @@ import com.Ecommerce_BE.Security.JwtUtils;
 import com.Ecommerce_BE.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,6 +33,10 @@ public class UserServiceImp implements UserService {
     private final EntityDtoMapper entityDtoMapper;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtils jwtUtils;
+    private final JavaMailSender mailSender;
+
+    @Value("${spring.mail.username}")
+    private String fromEmail;
 
     @Override
     public Response registerUser(UserDto registrationRequest) {
@@ -56,7 +63,7 @@ public class UserServiceImp implements UserService {
                 .status(200)
                 .message("User successfully added")
                 .data(userDto)
-                .build();
+                    .build();
 
     }
 
@@ -68,6 +75,8 @@ public class UserServiceImp implements UserService {
             throw new InvalidCredentialsException("Password does not match");
         }
         String token = jwtUtils.generateToken(user);
+
+        sendEmail(user.getEmail());
 
         return Response.builder()
                 .status(200)
@@ -110,4 +119,21 @@ public class UserServiceImp implements UserService {
                 .data(userDto)
                 .build();
     }
+
+    public void sendEmail(String email)
+    {
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(email);
+            message.setSubject("Login Notification");
+            message.setText("You have successfully logged in to your account. If this wasn't you, please contact support immediately.");
+            message.setFrom(fromEmail);
+
+            mailSender.send(message);
+        } catch (Exception e) {
+            e.printStackTrace(); // In ra stack trace để kiểm tra lỗi
+            throw new RuntimeException("Failed to send email: " + e.getMessage());
+        }
+    }
+
 }

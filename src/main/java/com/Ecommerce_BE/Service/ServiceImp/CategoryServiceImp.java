@@ -2,6 +2,7 @@ package com.Ecommerce_BE.Service.ServiceImp;
 
 import com.Ecommerce_BE.Dto.CategoryDto;
 import com.Ecommerce_BE.Dto.Response;
+import com.Ecommerce_BE.Exception.InvalidCredentialsException;
 import com.Ecommerce_BE.Exception.NotFoundException;
 import com.Ecommerce_BE.Mapper.EntityDtoMapper;
 import com.Ecommerce_BE.Model.Category;
@@ -11,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -25,13 +28,18 @@ public class CategoryServiceImp implements CategoryService {
 
     @Override
     public Response createCategory(CategoryDto categoryRequest) {
+        Optional<Category> categoryDB = categoryRepository.findByName(categoryRequest.getName());
+        if(categoryDB.isPresent())
+        {
+           throw new InvalidCredentialsException("Category is already exist");
+        }
         Category category = new Category();
         category.setName(categoryRequest.getName());
         categoryRepository.save(category);
 
         return Response.builder()
                 .status(200)
-                .message("Category created successfully")
+                .message("Category successfully created")
                 .build();
     }
 

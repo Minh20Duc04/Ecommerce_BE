@@ -28,8 +28,5 @@ public class Category {
     @Column(name = "created_at", updatable = false)
     private final LocalDateTime createdAt = LocalDateTime.now();
 
-
-
-
 }
 
