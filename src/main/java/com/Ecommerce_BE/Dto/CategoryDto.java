@@ -14,6 +14,7 @@ import java.util.List;
 public class CategoryDto {
 
     private Long id;
+    @NotBlank(message = "Category name is required")
     private String name;
     private List<ProductDto> productList;
 
